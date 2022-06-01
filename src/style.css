@@ -1,0 +1,28 @@
+h1 {text-align: center;}
+
+.projectswrap {
+    /* Turns this element into a flexbox */
+    display: flex;
+    /* Forces elements to the next line if they don't fit */
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 2%;
+  }
+
+/*@media screen and (min-width: 769px) {
+    .cardDisplay {
+      width: 27%;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+  .cardDisplay {
+    width: 50%;
+  }
+  }
+  
+  @media screen and (max-width: 576px) {
+  .cardDisplay {
+    width: 100%;
+  }
+  }*/

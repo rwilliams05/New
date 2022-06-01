@@ -1,5 +1,4 @@
 const Engineer = require('../lib/Engineer');
-const Employee = require('../lib/Employee');
 
 describe("Engineer", () => {
 
@@ -8,7 +7,7 @@ describe("Engineer", () => {
         const id = 5;
         const email = "sam@xyz.com";
         const github = "samxyz";
-        const obj = new Employee(name, id, email, github);
+        const obj = new Engineer(name, id, email, github);
 
         it("should set `name' when data is entered", () => {
             expect(obj.name).toEqual(name);
@@ -35,31 +34,24 @@ describe("Engineer", () => {
         const id = 5;
         const email = "sam@xyz.com";
         const github = "samxyz";
-        const role= "Engineer";
-        const obj = new Employee(name, id, email, github);
+        const role = "Engineer";
+        const obj = new Engineer(name, id, email, github);
 
         it("getName should return employee name", () => {
-            const name = "Sam";
-            const obj = new Employee(name);
             expect(obj.getName()).toEqual(name);
         })
 
         it("getId should return employee id", () => {
-            const id = 3;
-            const obj = new Employee(id);
             expect(obj.getId()).toEqual(id);
         })
 
         it("getEmail should return employee email", () => {
-            const email = "sam@xyz.com";
-            const obj = new Employee(email);
+
             expect(obj.getEmail()).toEqual(email);
         })
 
-        it("getEmail should return employee GitHub username", () => {
-            const email = "sam@xyz.com";
-            const obj = new Employee(email);
-            expect(obj.getEmail()).toEqual(gitHub);
+        it("getGithub should return employee GitHub username", () => {
+            expect(obj.getGithub()).toEqual(github);
         })
 
         it("getRole should return employee's role", () => {
