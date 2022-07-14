@@ -2,15 +2,15 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 //require classes
-const Employee = require('../lib/Employee');
-const Manager = require('../lib/Manager');
-const Engineer = require('../lib/Engineer');
-const Intern = require('../lib/Intern');
-const { ChildProcess } = require("child_process");
+const Employee = require('./lib/Employee');
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+const generateHTML=require('./src/generateHTML');
 
 const newTeam = [];
 
-//prompts user to enter team inf0, beginning with the manager
+//prompts user to enter team info, beginning with the manager
 console.log("Let's build your team.");
 function infoManager() {
     inquirer
@@ -83,5 +83,10 @@ function infoTeam(){
          choices: ["Yes, an engineer.", "Yes, an intern.", "No. I am finished. Generate my team!"]
      }   
     ])
-    .then(roleChoice =>)
+    .then(roleChoice =>);
+}
+
+function generateNewTeam() {
+    fs.writeFileSync('team.html',generateHTML(newTeam)); 
+
 }
