@@ -83,8 +83,144 @@ function infoTeam(){
          choices: ["Yes, an engineer.", "Yes, an intern.", "No. I am finished. Generate my team!"]
      }   
     ])
-    .then(roleChoice =>);
-}
+   .then(roleChoice =>{
+    switch(roleChoice.infoRole) {
+        case "Yes, an engineer.":
+addEngineer();
+break;
+case "Yes, an intern.":
+    addIntern();
+    break;
+    default:
+        generateNewTeam();
+    }
+   }
+    );
+};
+
+function addEngineer() {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                name: "nameEmployee",
+                message: `Please enter the employee's name`,
+                validate: answer => {
+                    if (!answer) {
+                        console.log("Please enter the name of the employee");
+                        return false;
+                    }
+                    return true;
+                }
+            },
+            {
+                type: "number",
+                name: "idEmployee",
+                message: `Please enter the employee's ID number`,
+                validate: answer => {
+                    if (!answer) {
+                        console.log("Please enter the employee's ID number");
+                        return false;
+                    }
+                    return true;
+                },
+
+
+            },
+            {
+                type: "input",
+                name: "emailEmployee",
+                message: "Please enter the employee's's email address",
+                validate: answer => {
+                    if (!answer) {
+                        console.log("Please enter the employee's email address");
+                        return false;
+                    }
+                    return true;
+                }
+            },
+            {
+                type: "number",
+                name: "githubEngineer",
+                message: "Please enter the engineer's GitHub username",
+                validate: answer => {
+                    if (!answer) {
+                        console.log("Please enter the engineer's GitHub username");
+                        return false;
+                    }
+                    return true;
+                }
+            }
+        ]).then(answers => {
+            const engineer = new Engineer(answers.nameEngineer, answers.idEngineer, answers.emailEngineer, answers.githubEngineer)
+            newTeam.push(engineer);
+            infoTeam();
+        });
+
+
+};
+
+function addIntern() {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                name: "nameEmployee",
+                message: `Please enter the employee's name`,
+                validate: answer => {
+                    if (!answer) {
+                        console.log("Please enter the name of the employee");
+                        return false;
+                    }
+                    return true;
+                }
+            },
+            {
+                type: "number",
+                name: "idEmployee",
+                message: `Please enter the employee's ID number`,
+                validate: answer => {
+                    if (!answer) {
+                        console.log("Please enter the employee's ID number");
+                        return false;
+                    }
+                    return true;
+                },
+
+
+            },
+            {
+                type: "input",
+                name: "emailEmployee",
+                message: "Please enter the employee's's email address",
+                validate: answer => {
+                    if (!answer) {
+                        console.log("Please enter the employee's email address");
+                        return false;
+                    }
+                    return true;
+                }
+            },
+            {
+                type: "number",
+                name: "schoolIntern",
+                message: "Please enter the engineer's GitHub username",
+                validate: answer => {
+                    if (!answer) {
+                        console.log("Please enter the name of the intern's school");
+                        return false;
+                    }
+                    return true;
+                }
+            }
+        ]).then(answers => {
+            const intern = new Intern(answers.nameIntern, answers.idIntern, answers.emailIntern, answers.schoolIntern)
+            newTeam.push(intern);
+            infoTeam();
+        });
+
+
+};
 
 function generateNewTeam() {
     fs.writeFileSync('team.html',generateHTML(newTeam)); 
