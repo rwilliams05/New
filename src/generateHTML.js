@@ -20,7 +20,7 @@ function generateHTML(teamArray) {
                      <ul class="list-group list-group-flush">
                          <li class="list-group-item border border-dark">ID: ${person.id}</li>
                          <li class="list-group-item border border-dark">Email:${person.email}</li>
-                         <li class="list-group-item border border-dark">Office Number: ${person.officeNUmber}</li>
+                         <li class="list-group-item border border-dark">Office Number: ${person.officeNumber}</li>
                      </ul>
                  </div>
              </div>`
@@ -33,7 +33,7 @@ function generateHTML(teamArray) {
                  <div class=" card-body bg-light text-dark">
                      <ul class="list-group list-group-flush">
                          <li class="list-group-item border border-dark">ID: ${person.id}</li>
-                         <li class="list-group-item border border-dark">Email:${person.email}}</li>
+                         <li class="list-group-item border border-dark">Email:${person.email}</li>
                          <li class="list-group-item border border-dark">School: ${person.school}</li>
                      </ul>
                  </div>
@@ -41,19 +41,21 @@ function generateHTML(teamArray) {
 
              } else {
                  return `<div class="engineer cardDisplay card text-white bg-primary mb-3" style="max-width: 25rem;">
-                 <div class="card-header bg">${person.name}}
+                 <div class="card-header bg">${person.name}
                      <p>Engineer</p>
                  </div>
                  <div class=" card-body bg-light text-dark">
                      <ul class="list-group list-group-flush">
-                         <li class="list-group-item border border-dark">ID: ${person.id}}</li>
-                         <li class="list-group-item border border-dark">Email:${person.email}}</li>
-                         <li class="list-group-item border border-dark">GitHub: ${person.gitHub}}</li>
+                         <li class="list-group-item border border-dark">ID: ${person.id}</li>
+                         <li class="list-group-item border border-dark">Email: <a target="_blank" href= "mailto:${person.email}"</a></li>
+                          <li class="list-group-item border border-dark">GitHub: <a target="_blank" href= "https://github.com${person.github}">${person.github}</a></li>
                      </ul>
                  </div>
              </div>`
              }
-         })}
+         })
+         .join("")
+        }
  
      </div>
  </body>

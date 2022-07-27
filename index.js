@@ -6,7 +6,7 @@ const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-const generateHTML=require('./src/generateHTML');
+const generateHTML = require('./src/generateHTML');
 
 const newTeam = [];
 
@@ -74,28 +74,28 @@ function infoManager() {
 
 };
 
-function infoTeam(){
+function infoTeam() {
     inquirer.prompt([
-     {
-         type: "list",
-         name: "infoRole",
-         message: "Would you like to enter another team member? Use arrow keys.",
-         choices: ["Yes, an engineer.", "Yes, an intern.", "No. I am finished. Generate my team!"]
-     }   
+        {
+            type: "list",
+            name: "infoRole",
+            message: "Would you like to enter another team member? Use arrow keys.",
+            choices: ["Yes, an engineer.", "Yes, an intern.", "No. I am finished. Generate my team!"]
+        }
     ])
-   .then(roleChoice =>{
-    switch(roleChoice.infoRole) {
-        case "Yes, an engineer.":
-addEngineer();
-break;
-case "Yes, an intern.":
-    addIntern();
-    break;
-    default:
-        generateNewTeam();
-    }
-   }
-    );
+        .then(roleChoice => {
+            switch (roleChoice.infoRole) {
+                case "Yes, an engineer.":
+                    addEngineer();
+                    break;
+                case "Yes, an intern.":
+                    addIntern();
+                    break;
+                default:
+                    generateNewTeam();
+            }
+        }
+        );
 };
 
 function addEngineer() {
@@ -140,7 +140,7 @@ function addEngineer() {
                 }
             },
             {
-                type: "number",
+                type: "input",
                 name: "githubEngineer",
                 message: "Please enter the engineer's GitHub username",
                 validate: answer => {
@@ -152,7 +152,7 @@ function addEngineer() {
                 }
             }
         ]).then(answers => {
-            const engineer = new Engineer(answers.nameEngineer, answers.idEngineer, answers.emailEngineer, answers.githubEngineer)
+            const engineer = new Engineer(answers.nameEmployee, answers.idEmployee, answers.emailEmployee, answers.githubEngineer)
             newTeam.push(engineer);
             infoTeam();
         });
@@ -202,9 +202,9 @@ function addIntern() {
                 }
             },
             {
-                type: "number",
+                type: "input",
                 name: "schoolIntern",
-                message: "Please enter the engineer's GitHub username",
+                message: "Please enter the name of the intern's school",
                 validate: answer => {
                     if (!answer) {
                         console.log("Please enter the name of the intern's school");
@@ -214,7 +214,7 @@ function addIntern() {
                 }
             }
         ]).then(answers => {
-            const intern = new Intern(answers.nameIntern, answers.idIntern, answers.emailIntern, answers.schoolIntern)
+            const intern = new Intern(answers.nameEmployee, answers.idEmployee, answers.emailEmployee, answers.schoolIntern)
             newTeam.push(intern);
             infoTeam();
         });
@@ -223,6 +223,7 @@ function addIntern() {
 };
 
 function generateNewTeam() {
-    fs.writeFileSync('team.html',generateHTML(newTeam)); 
-
+    fs.writeFileSync('team.html', generateHTML(newTeam));
 }
+
+infoManager();
