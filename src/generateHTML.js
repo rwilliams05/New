@@ -62,7 +62,7 @@ function generateHTML(teamArray) {
                      <ul class="list-group list-group-flush">
                          <li class="list-group-item border border-dark">ID: ${person.id}</li>
                          <li class="list-group-item border border-dark">Email: <a target="_blank" href="mailto:${person.email}">${person.email}</a></li>
-                          <li class="list-group-item border border-dark">GitHub: <a href="https://github.com${person.github}" target="_blank">${person.github}</a></li>
+                          <li class="list-group-item border border-dark">GitHub: <a href="https://github.com/${person.github}" target="_blank">${person.github}</a></li>
                                                                                                                </ul>
                  </div>
              </div>`
